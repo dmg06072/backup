@@ -1,0 +1,124 @@
+0 새폴더에서 git init 명령어 사용
+1 aaa.txt 파일을 추가하고 내용입력(아무거나) 
+2 SA 에 추가후 Commit(message V0.0)
+git add aaa.txt
+git commit -m V0.0
+
+2 bbb.txt 파일을 추가하고 내용입력(아무거나) 
+3 SA 에 추가후 Commit(message V0.1)
+4 ccc.txt 파일을 추가하고 내용입력(아무거나) 
+5 SA 에 추가후 Commit(message V0.2)
+
+6 branch 생성 (dev,feature)
+git branch dev
+git branch feature
+
+7 feature branch에서 작업 진행
+git checkout feature
+
+8 feature 에서 ddd.txt 파일생성후 내용입력 -> commit(V0.3)
+생성 + 내용 입력 후 저장
+git add *
+git commit -m "V0.3"
+
+9 feature 에서 dev으로 merging 작업수행
+git merge dev
+
+10 dev branch 에서 aaa.txt 내용 추가 -> commit(V0.4 by dev)
+git checkout dev
+내용 추가 후 저장
+git add *
+git commit -m "V0.4 dev"
+
+11 feature branch 에서 aaa.txt 내용 추가 -> commit(V0.4 feature)
+git checkout feature
+dev.txt에서 추가 했던 내용이랑 같은 줄에 내용 추가 + 저장
+git add *
+git commit -m "V.04 feature"
+
+12 Conflict 해결 이후 dev에 병합
+git checkout dev
+git merge dev
+aaa.txt 열어서 충돌 내용 수정 후 저장
+git add *
+git merge --continue
+:q
+
+12-1 feature branch에서 dev 내용 가져오기
+git switch feature
+git merge dev
+
+13 dev 내용 master에 병합
+git checkout master
+git merge dev
+
+-branch 생성
+git branch 브랜치명
+
+-branch 이동
+git switch 브랜치명
+git checkout 브랜치명
+
+-branch 확인
+git branch
+
+-branch 병합
+1 병합되는 branch 로 이동(git branch master)
+2 병합시도 (git merge dev - FastForward)
+
+-branch 병합 - 충돌시
+1 병합되는 branch 로 이동 (git branch master)
+2 병합시도(git merge dev) -> 충돌발생!
+3 fixed -> git add * -> git merge --continue
+(not Fast Forward merge - 커밋시점 새로 만든다)
+4 git switch dev -> git merge master
+
+git -> github
+git add
+git commit -m
+git push origin
+
+github -> git
+최초 1회 git clone <url>
+그 이후 git pull origin
+
+-branch 락 및 merge
+setting
+add classic branch protection rule
+branch name pattern
+lock branch(메인 작성자 제외 업로드 금지)
+Require a pull request before merging
+Require approvals(승인 댓글 n개 이상 시 merge)
+
+-초대
+collaborators
+add peole 닉넴
+
+--------------------------------------------------------------
+-조장
+프로젝트 만들기 과정
+collaborators에서 조원 추가하기
+프로젝트 생성
+할일 만들기(issue)
+프로젝트에서 인프로그레스로 이동시키기
+########################################
+-조원
+branch 생성 후 작업시작
+작업 완료 후 git add -> commit -> push
+깃허브에서 PR 요청
+나머지 조원이 승인 댓글 달기
+merge 처리
+--------------------------------------------------------------
+조장 - 프로젝트에서 업무완료 확인
+--------------------------------------------------------------
+이슈 체크리스트 만들기
+- [ ] '체크리스트명'
+
+
+시험 내용
+요구사항(리스트 -> 유스케이스 -> 명세서)
+와이어프레임 or 프로토타입(메인페이지 + 서브페이지 인원수대로)
+스타일가이드(레이아웃, 로고, 글꼴, 크기, 버튼)
+
+-----------------------------------------------------
+
