@@ -1,0 +1,7 @@
+-git 설치 (git download)
+
+-git config 설정
+git config --global user.email "github email"
+git config --global user.name "github nickname"
+
++ 재부팅
