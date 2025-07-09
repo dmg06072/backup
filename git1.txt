@@ -1,3 +1,7 @@
+
+git config --global user.email "이메일"
+git config --global user.name "닉네임"
+
 0 새폴더에서 git init 명령어 사용
 1 aaa.txt 파일을 추가하고 내용입력(아무거나) 
 2 SA 에 추가후 Commit(message V0.0)
