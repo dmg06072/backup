@@ -1,0 +1,65 @@
+### BOX ###
+Content	: 실제 내용이 표시되는 영역
+border	: 요소를 감싸는 테두리
+Padding	: 콘텐츠와 테두리 사이의 여백
+	: 배경색 적용 O, 중첩 X
+margin	: 요소 바깥의 외부 여백
+	: 배경색 적용 X, 인접한 margin끼리 중첩 O
+	     ↓ TOP     ↓ BOTTOM
+ex) padding: 1px, 2px, 3px, 4px; 
+	          ↑ RIGHT   ↑ LEFT
+TOP부터 시계 방향
+
+box-sizing  : content-box;	
+기본값. 
+width/height는 콘텐츠만 포함
+padding과 border가 추가로 포함되어 실제 박스 크기가 커짐
+box-sizing  : border-box;
+실무에서 권장. 
+width/height에 padding과 border 포함
+요소의 전체 너비와 높이가 설정한 width, height를 넘지 않도록 유지
+
+### 선택자 ###
+HTML 요소를 선택하여 스타일을 지정
+전체 선택자	: * 바디를 포함한 모든 요소를 선택
+요소 선택자	: 태그 선택 ex) div{}
+id 선택자		:  # 유일한 요소 지정 / 여러개 지정해도 자바스크립트 기능에서 하나만 작동
+class 선택자: 	: . .을 붙여 클래스 선택
+그룹선택자	: , 여러개 요소 선택
+의사선택자	: Ex) :hover 마우스를 갖다됐을 때 작동
+
+자식 선택자 : > 바로 아래 태그만 선택
+자손 선택자 : 공백 선택한 요소 모두 선택
+
+동위선택자
+~ : 같은 depth의 하위 모든 선택자(아래 n개)
++ : 같은 depth의 하위 선택자 하나만(아래 1개)
+
+input[type="checkbox"]:checked+label 인풋 타입 체크박스가 체크되어 있다면 라벨 태그 동작
+
+btn:hover		: 마우스 갖다 됐을 때
+btn:active	: 클릭 했을 때
+btn:visited	: 방문 했을 때
+
+가상선택자
+::before : content영역 앞에 표시할 스타일
+::after : content영역 뒤에 표시할 스타일
+표시하려면 content 필수 삽입
+Ex) .d1::after{
+            content:'🤣';
+        }
+
+nth-child : n번째 자식 요소
+	 (2n) 2*n
+	 (2n+1) 2*n+1
+	 first-child 첫번째 요소 선택자
+	 last-child 마지막 번째 요소 선택자
+
+### 포지션(position) ###
+static : 기본 값. 위치 변경 안 됨
+relative : 자기 자신(스태틱의 기본 위치)를 기준으로 움직임. -(마이너스) 값 적용 가능
+calc를 이용해서 계산도 가능
+absolute : 부모를 기준으로 이동. 상위 태그가 아무 포지션도 안 잡혀 있으면 뷰포트를 기준으로 이동
+
+
+	

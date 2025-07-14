@@ -1,0 +1,185 @@
+<style></style>
+* : 광역 설정
+font-size : 1rem (rem: 사이트 기본 사이즈(ex. 크롬은 16픽셀)
+. : 클래스 명 선택자
+display
+-block : 인라인형 블럭형태로 변경
+-flex : 수직, 수평 배치(보통 수평이 기본)
+
+require : 오류성 체크
+
+정규 표현식
+^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$
+                ^ : 시작
+                $ : 끝
+                () : 하나의식(묶는단위)
+                {8,25} : 길이(8자이상 25자 이하)
+                ?= : 전방탐색
+                . : 모든문자(길이 1)
+                * : 모든문자(길이 제한 없음)
+                [a-zA-Z] : 알파벳 a-z or A-Z 까지 탐색
+                [0-9] : 숫자 0-9 까지 탐색
+
+oninvalid : 이벤트 속성
+
+
+<script>
+        const Els = document.querySelectorAll('div'); 
+document: 문서 내 
+querySelectorAll: 'div' 검색 후
+const Els: 보관
+        Els.forEach(el=>{console.log(el.dataset)})
+
+    </script>
+
+margin : px px px px top, right, left, bottom / top부터 시계 방향 
+padding : top, right, left, bottom / top부터 시계 방향
+
+display: 
+block: 블럭형 변환 
+inline: 인라인형 변환
+
+문서내 style 태그 외부 css 생성 이후 link 설정(권장) inline style(권장 x) !important(권장 x) : 우선 순위로 설정
+
+link tap -->
+
+※문서 순서에 따라 마지막에 있는 명령어를 먼저 처리
+
+width : auto(기본값 : 최대너비를 가지려는 성질) 
+height : auto(기본값 : 최소높이를 가지려는 성질 ) 컨텐츠 있는 만큼 / 컨텐츠 없으면 표시 안 함 
+max-width : 최대너비 
+min-width : 최소너비 
+max-height : 최대높이 min-height : 최소높이 
+min -> 우선순위를 가짐
+
+rgb rgba: a=alpha(투명도)
+
+% : 가변크기 / 상위 태그를 기준(부모 태그의 영향을 받음) 
+vw, vh: 가변크기, 뷰포트를 기준
+
+백그라운드 background-image:url(' '); 
+cover: 전체 채우기 
+contain: 이미지 비율에 맞게 지정(빈 공간을 반복(repeat)해서 채워줌 
+background-repeat: no-repeat; 리핏 삭제 
+background-attachment : 백그라운드 고정
+
+글자 위치 
+line-height: 글자 기준 위아래 균등 간격 ex) line-height: 200px 위로 100, 아래로 100
+
+글자 크기 
+font-size px : 고정크기 / 기본값 : 16px em : 상대크기(부모태그의 font-size를 기준 배수) 
+rem : 상대크기(기본글자크기(:root : 16px기준)) 
+% : 상대크기 (상위태그 기준) 
+vw : 상대크기 (뷰포트를 기준) / clamp(최소 크기, 기본 크기, 최대 크기
+
+외부 폰트 받아오기
+링크: html 코드 헤드에 붙여넣기, css 코드 헤드 <style>에 붙여넣기 바꾸고 싶은 위치에 class="font-famliy 부분 복붙"
+다운: 같은 폴더에 ttf 파일 위치. 헤드 안에 @font-family{
+						font-family: '이름';
+       						src:url('경로');
+        						font-style:normal; }
+
+margin
+1. margin + position
+2. layout
+
+가운데 맞추기 01
+.p1{
+            position:relative;
+        }
+        .s1{
+            position:absolute;
+            left:0;
+            right:0;
+            top:0;
+            bottom:0;
+            margin:auto;
+        }
+
+가운데 맞추기 02
+display:flex;
+            justify-content: center;
+            align-items: center;
+
+테두리 깍기
+border-radius
+11시 탑
+5시 바텀
+1시 라이트
+7시 레프트
+
+삼각형 만들기
+	border-top:20px solid transparent;
+            border-right:20px solid orange;
+            border-bottom:20px solid orange;
+            border-left:20px solid transparent;
+            height:0;
+            width:0;
+ 종이 접기
+        .d4{
+            position:relative;
+            border:1px solid orange;
+        }
+
+        .d4::after{
+            content:'';
+            position:absolute;
+            left:-1px;
+            top:-1px;
+            border-top:20px solid white;
+            border-right:20px solid orange;
+            border-bottom:20px solid orange;
+            border-left:20px solid white;
+        }
+
+오버플로우
+overflow	: hidden 		부모보다 큰 경우 넘친 부분 숨김
+	: scoll(x,y) 	넘친 부분 스크롤
+	: visible		그냥 보여줌
+	: auto		자동으로 스크롤 설정
+
+box-sizing : content-box (기본값) 컨텐츠 영역만 지정 / 패딩이 드가면 패딩 만큼 전체 크기가 변함
+	 : border-box 보더를 기준으로 크기 지정 / 패딩을 넣더라도 크기 안 변함
+
+선택자
+HTML 요소를 선택하여 스타일을 지정
+전체 선택자	: * 바디를 포함한 모든 요소를 선택
+요소 선택자	: 태그 선택 ex) div{}
+id 선택자		:  # 유일한 요소 지정 / 여러개 지정해도 자바스크립트 기능에서 하나만 작동
+class 선택자: 	: . .을 붙여 클래스 선택
+그룹선택자	: , 여러개 요소 선택
+의사선택자	: Ex) :hover 마우스를 갖다됐을 때 작동
+
+자식 선택자 : > 바로 아래 태그만 선택
+자손 선택자 : 공백 선택한 요소 모두 선택
+
+동위선택자
+~ : 같은 depth의 하위 모든 선택자(아래 n개)
++ : 같은 depth의 하위 선택자 하나만(아래 1개)
+
+input[type="checkbox"]:checked+label 인풋 타입 체크박스가 체크되어 있다면 라벨 태그 동작
+
+btn:hover		: 마우스 갖다 됐을 때
+btn:active	: 클릭 했을 때
+btn:visited	: 방문 했을 때
+
+가상선택자
+::before : content영역 앞에 표시할 스타일
+::after : content영역 뒤에 표시할 스타일
+표시하려면 content 필수 삽입
+Ex) .d1::after{
+            content:'🤣';
+        }
+
+nth-child : n번째 자식 요소
+	 (2n) 2*n
+	 (2n+1) 2*n+1
+	 first-child 첫번째 요소 선택자
+	 last-child 마지막 번째 요소 선택자
+
+포지션(position)
+static : 기본 값. 위치 변경 안 됨
+relative : 자기 자신(스태틱의 기본 위치)를 기준으로 움직임. -(마이너스) 값 적용 가능
+calc를 이용해서 계산도 가능
+absolute : 부모를 기준으로 이동. 상위 태그가 아무 포지션도 안 잡혀 있으면 뷰포트를 기준으로 이동
+
