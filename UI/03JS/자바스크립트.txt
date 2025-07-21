@@ -1,0 +1,53 @@
+<script></script>
+// number
+        console.log(typeof 10);
+        console.log(typeof 10.5);
+        // string
+        console.log(typeof "HELLOWORLD");
+        console.log(typeof 'HELLOWORLD');
+        console.log(typeof `HELLOWORLD`);
+        // Object : {key : value , key : value}
+        // {"name":"홍길동", "age":"30","addr":"대구"};
+        console.log(typeof {})
+        console.log(typeof {"name":"홍길동", "age":"30","addr":"대구"})
+        // null / 변수 초기화(공간형성 + 기본값 삽입 - 개발자가 의도한 값 NULL)
+        // 의도한 빈 값
+        let volume = null;
+        console.log(volume);
+        console.log(typeof volume);
+        // underfined (공간형성 o,x but 기본값은 생략 - 개발자가 의도하지 못한 예외)
+        // 의도하지 않는 빈 값 
+        let vol2;   // 공간형성시 예외발생하지는 않음
+        console.log(vol2)
+        // boolean
+        console.log(typeof true);
+        console.log(typeof false);
+-----------------------------------------------------------------------------------------------
+// .btn 클래스를 가진 html 요소를 선택하여 btnEl 변수에 저장
+const btnEl = document.querySelector('.btn');
+        // btnEl.addEventListener('이벤트종류','수행로직');
+        // 콜백함수 : 수행로직을 전달 받는 함수
+// 버튼 상태를 나타내는 변수. false로 초기화
+        let state = false;
+// 클릭 이벤트 리스너 등록
+        btnEl.addEventListener('click',()=>{
+            // alert('클릭됨');
+// true 값 반환 / 상태를 false로 변경
+            if(state) {
+            btnEl.style.backgroundColor='white';
+            // css에서는 - 기호를 쓰지만 JS에서는 - 기호 대신 카멜 표기법 사용
+            btnEl.style.color='black';
+            state=false;
+        }
+// false 값 반환 / 상태를 true로 변경
+            else{
+                btnEl.style.backgroundColor='black';
+                btnEl.style.color='white';
+                state = true;
+        }
+        })
+보간법	: 변수, 함수 호출 및 산술 표현식을 문자열에 직접 삽일할 수 있는 기능
+	: ${value} 형식을 사용, 백틱(``)에만 사용 가능
+
+변수 지정 : let
+상수 지정 : const 
