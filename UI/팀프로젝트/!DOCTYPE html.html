@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {box-sizing: border-box;}
+
+        /* common */
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+.big-banner {
+    position: relative;
+    width: 100vw;
+    max-width: 1920px;
+    height: 500px;
+    overflow: hidden;
+}
+.slide {
+    display: flex;
+    transition: transform 0.5s ease;
+    width: 100vw; /* 슬라이드 개수만큼 vw 단위로 */
+}
+.sld {
+    width: 100%;
+    height: 500px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+}
+.sld img {
+    width: 100vw;
+    height: 100%;
+    object-fit: fill;      /* 비율 무시, 영역에 꽉 채움 */
+    object-position: center;
+    display: block;
+}
+        .S-img {
+            position:absolute;
+            bottom: 10px;
+            left: 10px;
+            display: flex;
+            gap: 8px;
+        }
+        .sss {
+            width: 42px;
+            height: 42px;
+            object-fit: cover;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: border 0.3;
+        }
+        .sss:hover {
+            border: 1px solid white;
+        }
+       .image-box {
+      width: 1280px;
+      height: 239px;
+      margin: 100px auto 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-content: space-between;
+    }
+    .image-box img {
+      width: calc((1280px - 20px * 2) / 3);
+      height: 110px;
+      object-fit: cover;
+      border-radius: 8px;
+      background-color: #ddd;
+    }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="big-banner">
+            <div class="slide">
+                <div class="sld" style="background-image: url('이미지 파일/b1.jpg');"></div>
+                <div class="sld"><img src="이미지 파일/b2.jpg" alt=""></div>
+                <div class="sld"><img src="이미지 파일/b11.jpg" alt=""></div>
+                <div class="sld"><img src="이미지 파일/250718033125_25009340.jpg" alt=""></div>
+                <div class="sld"><img src="새/adsfasfsdaf.png" alt=""></div>
+                <div class="sld"><img src="" alt=""></div>
+                <div class="sld"><img src="" alt=""></div>
+            </div>
+            <div class="S-img">
+                <img src="" class="sss" data-index="0" alt="">
+                <img src="" class="sss" data-index="1" alt="">
+                <img src="" class="sss" data-index="2" alt="">
+                <img src="" class="sss" data-index="3" alt="">
+                <img src="" class="sss" data-index="4" alt="">
+                <img src="" class="sss" data-index="5" alt="">
+                <img src="" class="sss" data-index="6" alt=""> 
+            </div>
+        </div>
+            <div class="image-box">
+                <img src="" alt="img1">
+                <img src="" alt="img2">
+                <img src="" alt="img3">
+                <img src="" alt="img4">
+                <img src="" alt="img5">
+                <img src="" alt="img6">
+            </div>
+        <div>
+            <h3></h3>
+            <div>
+                <button></button><button></button><button></button><button></button><button></button>
+                <div></div>
+            </div>
+        </div>
+    </main>
+
+ <script>
+  const slideWrapper = document.querySelector('.big-banner .slide');
+  const slides = document.querySelectorAll('.big-banner .sld');
+  const thumbnails = document.querySelectorAll('.big-banner .sss');
+  const slideCount = slides.length;
+
+  let currentIndex = 0;
+  let autoSlide;
+
+  // 초기 스타일 설정
+  slideWrapper.style.display = 'flex';
+  slideWrapper.style.transition = 'transform 0.5s ease';
+  slides.forEach(slide => {
+    slide.style.flex = '0 0 100%';
+  });
+
+  function showSlide(index) {
+    slideWrapper.style.transform = `translateX(-${index * 100}%)`;
+    currentIndex = index;
+  }
+
+  function startAutoSlide() {
+    autoSlide = setInterval(() => {
+      const nextIndex = (currentIndex + 1) % slideCount;
+      showSlide(nextIndex);
+    }, 3000);
+  }
+
+  function stopAutoSlide() {
+    clearInterval(autoSlide);
+  }
+
+  // 썸네일에 마우스 올리면 해당 슬라이드로 이동
+  thumbnails.forEach((thumb, index) => {
+    thumb.addEventListener('mouseenter', () => {
+      stopAutoSlide();
+      showSlide(index);
+    });
+    thumb.addEventListener('mouseleave', () => {
+      startAutoSlide();
+    });
+  });
+
+  // 초기 실행
+  showSlide(0);
+  startAutoSlide();
+</script>
+
+
+</body>
+</html>
