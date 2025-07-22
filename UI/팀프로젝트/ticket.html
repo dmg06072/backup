@@ -1,61 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        * {box-sizing: border-box;}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="CSS/header.css">
+  <link rel="stylesheet" href="CSS/common.css">
 
-        /* common */
-        a {
-            text-decoration: none;
-            color: black;
-        }
+  <style>
+    .big-banner {
+      position: relative;
+      width: calc(100vw - 15px);
+      /* 스크롤 바 위치 픽셀 - */
+      max-width: 1920px;
+      height: 500px;
+      overflow: hidden;
+      left: 50%;
+      transform: translateX(-50%);
+    }
 
-        .big-banner {
-            position: relative;
-            width: 100%;
-            max-width: 1920px;
-            height:500px;
-            overflow: hidden;
-        }
-        .slide {
-            display : flex;
-            transition: 3s ease;
-            width: 700%;
-        }
-        .sld {
-            background-size: cover;
-            background-position: center;
-            width: 100%;
-            height: 500px;
-        }
-            .sld img {
-            width: 100%;
-            height: auto;
-            object-fit: fill; 
-            /* object-position: center; */
-        }
-        .S-img {
-            position:absolute;
-            bottom: 10px;
-            left: 10px;
-            display: flex;
-            gap: 8px;
-        }
-        .sss {
-            width: 42px;
-            height: 42px;
-            object-fit: cover;
-            cursor: pointer;
-            border: 1px solid transparent;
-            transition: border 0.3;
-        }
-        .sss:hover {
-            border: 1px solid white;
-        }
-       .image-box {
+    .slide {
+      display: flex;
+      transition: transform 0.5s ease;
+      width: 100vw;
+    }
+
+    .sld {
+      width: 100%;
+      height: 500px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: stretch;
+      justify-content: stretch;
+    }
+
+    .sld img {
+      width: 100vw;
+      height: 100%;
+      object-fit: fill;
+      object-position: center;
+      display: block;
+    }
+
+    .S-img {
+      position: absolute;
+      bottom: 25px;
+      left: 340px;
+      display: flex;
+      gap: 8px;
+    }
+
+    .sss {
+      width: 42px;
+      height: 42px;
+      object-fit: cover;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: border 0.3;
+    }
+
+    .sss:hover {
+      border: 1px solid white;
+    }
+
+    .image-box {
       width: 1280px;
       height: 239px;
       margin: 100px auto 0;
@@ -64,6 +74,7 @@
       justify-content: space-between;
       align-content: space-between;
     }
+
     .image-box img {
       width: calc((1280px - 20px * 2) / 3);
       height: 110px;
@@ -71,95 +82,709 @@
       border-radius: 8px;
       background-color: #ddd;
     }
-    </style>
+
+    .h-tag {
+      text-align: center;
+      margin: 81px 0 42px 0;
+    }
+
+    .btn-common {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .btn1 {
+      width: 124px;
+      height: 45px;
+      border-radius: 100px;
+      background-color: white;
+      border: 1px solid #e8e8e8;
+      color: #343434;
+      cursor: pointer;
+      transition: background-color 0.1s;
+    }
+
+    .btn1.active {
+      background-color: #343434;
+      color: white;
+    }
+
+    .rank-button-wrap {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin: 20px 0 40px;
+    }
+
+    .btn2 {
+      padding: 10px 24px;
+      border-radius: 25px;
+      font-size: 15px;
+      background-color: white;
+      color: black;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+
+
+    .img-box2 {
+      width: 1280px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0;
+    }
+
+    .img-box2 .box {
+      width: calc((1280px - 80px) / 5);
+      display: flex;
+      flex-direction: column;
+      margin: 25px 0;
+    }
+
+    .img-box2 .box img {
+      width: 100%;
+      height: 290px;
+      object-fit: cover;
+      border-radius: 8px;
+      background-color: #ccc;
+    }
+
+    .img-box2 .box dl {
+      margin-top: 15px;
+    }
+
+    .img-box2 .box dt {
+      font-weight: bold;
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+
+    .img-box2 .box dd {
+      margin: 0;
+      font-size: 13px;
+      color: #666;
+    }
+
+    .genre1 {
+      display: none;
+    }
+
+    .genre1.active {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .open-section {
+      max-width: 1280px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 50px 20px;
+    }
+
+    .open-section h2 {
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 30px;
+    }
+
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .card {
+      width: 300px;
+      border: 1px solid #eee;
+      border-radius: 16px;
+      padding: 16px;
+      text-align: left;
+      background-color: white;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 12px;
+    }
+
+    .info .date {
+      font-weight: bold;
+      color: #0031e0;
+      margin-bottom: 5px;
+    }
+
+    .info .title {
+      font-weight: 600;
+      font-size: 16px;
+      margin-bottom: 5px;
+      line-height: 1.4;
+    }
+
+    .info .desc {
+      font-size: 14px;
+      color: #333;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 12px;
+      padding: 2px 6px;
+      border-radius: 5px;
+      margin-top: 5px;
+      margin-right: 5px;
+    }
+
+    .tag.red {
+      background-color: #f33;
+      color: white;
+    }
+
+    .tag.blue {
+      background-color: #e6e6ff;
+      color: #0031e0;
+    }
+
+    .more-btn {
+      margin-top: 30px;
+    }
+
+    .more-btn button {
+      background-color: white;
+      border: 1px solid #ccc;
+      border-radius: 25px;
+      padding: 12px 24px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .more-btn button:hover {
+      background-color: #f5f5f5;
+    }
+  </style>
 </head>
+
 <body>
-    <main>
+  <main>
+    <div class="outer-wrapper ">
+      <header class="layoutcenter">
+        <div class="mainheader-wrapper layout-01">
+          <div class="main-header">
+            <a href="" class="main-logo">NOL outerpark</a>
+            <form class="search">
+              <input class="search-text" type="text" placeholder=" 놀기 좋은 여름, 혜택을 놀랍게">
+              <button type="submit"><img class="submit-img" src="이미지/돋보기.svg" alt=""></button>
+            </form>
+            <div class="event"><img style="width: 180px; height: 50px;" src="이미지/헤더.png" alt=""></div>
+            <div class="page-change">
+              <a href="">NOL</a>
+              <a href="">TRIPLE</a>
+              <a href="">outerpark Global</a>
+            </div>
+          </div>
+          <div class="sub-header">
+            <ul class="service-menu">
+              <li><a href="">홈</a></li>
+              <li><a href="">투어</a></li>
+              <li><a href="">티켓</a></li>
+            </ul>
+            <ul class="service">
+              <li><a href="">로그인</a></li>
+              <li><a href="">내 예약</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="subheader-wrapper layout-01">
+          <div class="menu-header">
+            <ul class="category-menu1">
+              <li><a href="">뮤지컬</a></li>
+              <li><a href="">콘서트</a></li>
+              <li><a href="">스포츠</a></li>
+              <li><a href="">전시/행사</a></li>
+              <li><a href="">클래식/무용</a></li>
+              <li><a href="">아동/가족</a></li>
+              <li><a href="">연극</a></li>
+              <li><a href="">레저/캠핑</a></li>
+              <li><a href="">토핑</a></li>
+              <li><a href="">MD shop</a></li>
+            </ul>
+            <ul class="category-menu2">
+              <li><a href="">랭킹</a></li>
+              <li><a href="">오픈예정</a></li>
+              <li><a href="">지역별</a></li>
+              <li><a href="">공연장</a></li>
+            </ul>
+
+          </div>
+        </div>
         <div class="big-banner">
-            <div class="slide">
-                <div class="sld" style="background-image: url('이미지 파일/b1.jpg');"></div>
-                <div class="sld"><img src="이미지 파일/b2.jpg" alt=""></div>
-                <div class="sld"><img src="이미지 파일/b11.jpg" alt=""></div>
-                <div class="sld"><img src="이미지 파일/250718033125_25009340.jpg" alt=""></div>
-                <div class="sld"><img src="" alt=""></div>
-                <div class="sld"><img src="" alt=""></div>
-                <div class="sld"><img src="" alt=""></div>
-            </div>
-            <div class="S-img">
-                <img src="" class="sss" data-index="0" alt="">
-                <img src="" class="sss" data-index="1" alt="">
-                <img src="" class="sss" data-index="2" alt="">
-                <img src="" class="sss" data-index="3" alt="">
-                <img src="" class="sss" data-index="4" alt="">
-                <img src="" class="sss" data-index="5" alt="">
-                <img src="" class="sss" data-index="6" alt=""> 
-            </div>
+          <div class="slide">
+            <div class="sld"><img src="" alt=""></div>
+            <div class="sld"><img src="이미지 파일/b2.jpg" alt=""></div>
+            <div class="sld"><img src="이미지 파일/b11.jpg" alt=""></div>
+            <div class="sld"><img src="이미지 파일/250718033125_25009340.jpg" alt=""></div>
+            <div class="sld"><img src="" alt=""></div>
+            <div class="sld"><img src="" alt=""></div>
+            <div class="sld"><img src="" alt=""></div>
+          </div>
+          <div class="S-img">
+            <img src="" class="sss" data-index="0" alt="">
+            <img src="" class="sss" data-index="1" alt="">
+            <img src="" class="sss" data-index="2" alt="">
+            <img src="" class="sss" data-index="3" alt="">
+            <img src="" class="sss" data-index="4" alt="">
+            <img src="" class="sss" data-index="5" alt="">
+            <img src="" class="sss" data-index="6" alt="">
+          </div>
         </div>
-            <div class="image-box">
-                <img src="" alt="img1">
-                <img src="" alt="img2">
-                <img src="" alt="img3">
-                <img src="" alt="img4">
-                <img src="" alt="img5">
-                <img src="" alt="img6">
-            </div>
+        <div class="image-box">
+          <img src="" alt="img1">
+          <img src="" alt="img2">
+          <img src="" alt="img3">
+          <img src="" alt="img4">
+          <img src="" alt="img5">
+          <img src="" alt="img6">
+        </div>
         <div>
-            <h3></h3>
-            <div>
-                <button></button><button></button><button></button><button></button><button></button>
-                <div></div>
-            </div>
+          <h2 class="h-tag">장르별 랭킹</h2>
+          <div class="btn-common">
+            <button class="btn1" data-target="musical">뮤지컬</button>
+            <button class="btn1" data-target="concert">콘서트</button>
+            <button class="btn1" data-target="sports">스포츠</button>
+            <button class="btn1" data-target="exhibition">전시/행사</button>
+            <button class="btn1" data-target="classic">클래식</button>
+          </div>
+
         </div>
-    </main>
 
- <script>
-  const slideWrapper = document.querySelector('.big-banner .slide');
-  const slides = document.querySelectorAll('.big-banner .sld');
-  const thumbnails = document.querySelectorAll('.big-banner .sss');
-  const slideCount = slides.length;
+        <div class="genre">
+          <div class="genre1" id="musical">
+            <div class="img-box2">
 
-  let currentIndex = 0;
-  let autoSlide;
+              <div class="box">
+                <img src="" alt="img1">
+                <dl>
+                  <dt>뮤지컬 &lt;팬텀&gt; 10주년 기념 공연</dt>
+                  <dd>세종문화회관 대극장</dd>
+                  <dd>2025.05.31 - 08.11</dd>
+                </dl>
+              </div>
 
-  // 초기 스타일 설정
-  slideWrapper.style.display = 'flex';
-  slideWrapper.style.transition = 'transform 0.5s ease';
-  slides.forEach(slide => {
-    slide.style.flex = '0 0 100%';
-  });
+              <div class="box">
+                <img src="" alt="img2">
+                <dl>
+                  <dt>뮤지컬 &lt;알라딘&gt;</dt>
+                  <dd>세종문화회관 대극장</dd>
+                  <dd>2025.05.31 - 08.11</dd>
+                </dl>
+              </div>
 
-  function showSlide(index) {
-    slideWrapper.style.transform = `translateX(-${index * 100}%)`;
-    currentIndex = index;
-  }
+              <div class="box">
+                <img src="" alt="img3">
+                <dl>
+                  <dt>뮤지컬 &lt;나의 아저씨&gt;</dt>
+                  <dd>세종문화회관 대극장</dd>
+                  <dd>2025.05.31 - 08.11</dd>
+                </dl>
+              </div>
 
-  function startAutoSlide() {
-    autoSlide = setInterval(() => {
-      const nextIndex = (currentIndex + 1) % slideCount;
-      showSlide(nextIndex);
-    }, 3000);
-  }
+              <div class="box">
+                <img src="" alt="img4">
+                <dl>
+                  <dt>뮤지컬 &lt;슬립노모어&gt;</dt>
+                  <dd>세종문화회관 대극장</dd>
+                  <dd>2025.05.31 - 08.11</dd>
+                </dl>
+              </div>
 
-  function stopAutoSlide() {
-    clearInterval(autoSlide);
-  }
+              <div class="box">
+                <img src="" alt="img5">
+                <dl>
+                  <dt>뮤지컬 &lt;프라다&gt;</dt>
+                  <dd>세종문화회관 대극장</dd>
+                  <dd>2025.05.31 - 08.11</dd>
+                </dl>
+              </div>
 
-  // 썸네일에 마우스 올리면 해당 슬라이드로 이동
-  thumbnails.forEach((thumb, index) => {
-    thumb.addEventListener('mouseenter', () => {
-      stopAutoSlide();
-      showSlide(index);
+              <div class="rank-button-wrap">
+                <button id="allRank" class="btn2">뮤지컬 랭킹 전체보기</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="genre1" id="concert">
+          <div class="img-box2">
+            <div class="box">
+              <img src="" alt="img1">
+              <dl>
+                <dt>싸이 흠뻑쇼 - 부산</dt>
+                <dd>부산</dd>
+                <dd>2025.05.31 - 08.11</dd>
+              </dl>
+            </div>
+            <div class="box">
+              <img src="" alt="img2">
+              <dl>
+                <dt>싸이 흠뻑쇼 - 서울</dt>
+                <dd>서울</dd>
+                <dd>2025.05.31 - 08.11</dd>
+              </dl>
+            </div>
+
+            <div class="box">
+              <img src="" alt="img3">
+              <dl>
+                <dt>싸이 흠뻑쇼 - 대구</dt>
+                <dd>대구</dd>
+                <dd>2025.05.31 - 08.11</dd>
+              </dl>
+            </div>
+
+            <div class="box">
+              <img src="" alt="img4">
+              <dl>
+                <dt>IU 콘서트</dt>
+                <dd>지구</dd>
+                <dd>2025.05.31 - 08.11</dd>
+              </dl>
+            </div>
+
+            <div class="box">
+              <img src="" alt="img5">
+              <dl>
+                <dt>빅뱅 콘서트</dt>
+                <dd>탑 복귀 해줘잉</dd>
+                <dd>2025.05.31 - 08.11</dd>
+              </dl>
+            </div>
+            <div class="rank-button-wrap">
+              <button id="allRank" class="btn2">콘서트 랭킹 전체보기</button>
+
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="genre1" id="sports">
+      <div class="img-box2">
+        <div class="box">
+          <img src="" alt="img1">
+          <dl>
+            <dt>대구 FC vs 바르셀로나</dt>
+            <dd>대구 월드컵 경기장</dd>
+            <dd>2025.08.04</dd>
+          </dl>
+        </div>
+        <div class="box">
+          <img src="" alt="img2">
+          <dl>
+            <dt>바이에른 뮌헨 vs 레알 마드리드</dt>
+            <dd>알리안츠 아레나</dd>
+            <dd>2025.05.31 - 08.11</dd>
+          </dl>
+        </div>
+
+        <div class="box">
+          <img src="" alt="img3">
+          <dl>
+            <dt>스탬퍼드 브리지</dt>
+            <dd>첼시 vs 유벤투스</dd>
+            <dd>2025.05.31 - 08.11</dd>
+          </dl>
+        </div>
+
+        <div class="box">
+          <img src="" alt="img4">
+          <dl>
+            <dt>맨체스터 유나이티드 vs 풀럼</dt>
+            <dd>올드 트래포드</dd>
+            <dd>2025.05.31 - 08.11</dd>
+          </dl>
+        </div>
+
+        <div class="box">
+          <img src="" alt="img5">
+          <dl>
+            <dt>도르트문트 vs 바이에른 뮌헨</dt>
+            <dd>지그날 이두나 파크</dd>
+            <dd>2025.05.31 - 08.11</dd>
+          </dl>
+        </div>
+        <div class="rank-button-wrap">
+          <button id="allRank" class="btn2">스포츠 랭킹 전체보기</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="genre1" id="exhibition">
+      <div class="img-box2">
+        <div class="box">
+          <img src="" alt="img1">
+          <dl>
+            <dt>코딩</dt>
+            <dd>코리아 IT 아카데미</dd>
+            <dd>2025.05.31 - 08.11</dd>
+          </dl>
+        </div>
+        <div class="box">
+          <img src="" alt="img2">
+          <dl>
+            <dt>집 탐방</dt>
+            <dd>집</dd>
+            <dd>2025.05.31 - 08.11</dd>
+          </dl>
+        </div>
+
+        <div class="box">
+          <img src="" alt="img3">
+          <dl>
+            <dt>쿠푸왕의 피라미드</dt>
+            <dd>전쟁기념관</dd>
+            <dd>2025.05.31 - 08.11</dd>
+          </dl>
+        </div>
+
+        <div class="box">
+          <img src="" alt="img4">
+          <dl>
+            <dt>2025 대구 카페쇼</dt>
+            <dd>엑스코</dd>
+            <dd>2025.05.31 - 08.11</dd>
+          </dl>
+        </div>
+
+        <div class="box">
+          <img src="" alt="img5">
+          <dl>
+            <dt>G-STAR 2025</dt>
+            <dd>벡스코</dd>
+            <dd>2025.05.31 - 08.11</dd>
+          </dl>
+        </div>
+        <div class="rank-button-wrap">
+          <button id="allRank" class="btn2">전시/행사 랭킹 전체보기</button>
+        </div>
+      </div>
+    </div>
+    <div class="genre1" id="classic">
+      <div class="img-box2">
+        <div class="box">
+          <img src="" alt="img1">
+          <dl>
+            <dt>디지몬 심포니</dt>
+            <dd>여의도 KBS홀</dd>
+            <dd>2025.05.31 - 08.11</dd>
+          </dl>
+        </div>
+        <div class="box">
+          <img src="" alt="img2">
+          <dl>
+            <dt>너의 이름은. 공식 필름 콘서트</dt>
+            <dd>부산 콘서트홀</dd>
+            <dd>2025.05.31 - 08.11</dd>
+          </dl>
+        </div>
+
+        <div class="box">
+          <img src="" alt="img3">
+          <dl>
+            <dt>일무</dt>
+            <dd>세종문화회관</dd>
+            <dd>2025.05.31 - 08.11</dd>
+          </dl>
+        </div>
+
+        <div class="box">
+          <img src="" alt="img4">
+          <dl>
+            <dt>시네마 오케스트라</dt>
+            <dd>콘서트홀</dd>
+            <dd>2025.05.31 - 08.11</dd>
+          </dl>
+        </div>
+
+        <div class="box">
+          <img src="" alt="img5">
+          <dl>
+            <dt>고잉 홈프로젝트</dt>
+            <dd>예술의 전당</dd>
+            <dd>2025.05.31 - 08.11</dd>
+          </dl>
+          <div class="rank-button-wrap">
+            <button id="allRank" class="btn2">클래식 랭킹 전체보기</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="open-section">
+  <h2>오픈 예정</h2>
+  <div class="card-container">
+    <div class="card">
+      <img src="poster1.jpg" alt="연극 프리마 파시 포스터">
+      <div class="info">
+        <p class="date"><time datetime="2025-07-25T14:00">07.25(금) 14:00</time></p>
+        <p class="title">연극 &lt;프리마 파시&gt;</p>
+        <p class="desc">1차티켓오픈<br>좌석우위</p>
+      </div>
+    </div>
+          <div class="card">
+            <img src="" alt="포스터">
+            <div class="info">
+              <p class="date">07.28(월) 12:00</p>
+              <p class="title">MARCIN(마르친) 내한공연</p>
+              <p class="desc">일반예매<br><span class="tag blue">단독판매</span></p>
+            </div>
+          </div>
+          <div class="card">
+            <img src="" alt="포스터">
+            <div class="info">
+              <p class="date">07.30(수) 20:00</p>
+              <p class="title">TOMORROW X TOGETHER WORLD TOUR &lt;ACT :&gt;</p>
+              <p class="desc">일반예매<br><span class="tag red">HOT</span> <span class="tag blue">단독판매</span></p>
+            </div>
+          </div>
+          <div class="card">
+            <img src="" alt="포스터">
+            <div class="info">
+              <p class="date">오늘 20:00</p>
+              <p class="title">2025 실리카겔 단독공연 Syn.THE.Size X</p>
+              <p class="desc">일반예매<br><span class="tag red">HOT</span> <span class="tag blue">단독판매</span></p>
+            </div>
+          </div>
+          <div class="card">
+            <img src="" alt="포스터">
+            <div class="info">
+              <p class="date">내일 14:00</p>
+              <p class="title">미스터쇼(Mr.SHOW)</p>
+              <p class="desc">일반예매<br><span class="tag blue">단독판매</span></p>
+            </div>
+          </div>
+          <div class="card">
+            <img src="" alt="포스터">
+            <div class="info">
+              <p class="date">07.28(월) 20:00</p>
+              <p class="title">2025 TEEN TOP WE GONNA ROCK IT DROP IT...</p>
+              <p class="desc">일반예매<br><span class="tag red">HOT</span> <span class="tag blue">단독판매</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="more-btn">
+          <button>오픈 예정 공연 전체보기</button>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+  </main>
+
+  <!-- 메인 배너 슬라이드 -->
+  <script>
+    const slideWrapper = document.querySelector('.big-banner .slide');
+    const slides = document.querySelectorAll('.big-banner .sld');
+    const thumbnails = document.querySelectorAll('.big-banner .sss');
+    const slideCount = slides.length;
+
+    let currentIndex = 0;
+    let autoSlide;
+
+    // 초기 스타일 설정
+    slideWrapper.style.display = 'flex';
+    slideWrapper.style.transition = 'transform 0.5s ease';
+    slides.forEach(slide => {
+      slide.style.flex = '0 0 100%';
     });
-    thumb.addEventListener('mouseleave', () => {
-      startAutoSlide();
+
+    function showSlide(index) {
+      slideWrapper.style.transform = `translateX(-${index * 100}%)`;
+      currentIndex = index;
+    }
+
+    function startAutoSlide() {
+      autoSlide = setInterval(() => {
+        const nextIndex = (currentIndex + 1) % slideCount;
+        showSlide(nextIndex);
+      }, 3000);
+    }
+
+    function stopAutoSlide() {
+      clearInterval(autoSlide);
+    }
+
+    // 마우스 올리면 해당 슬라이드로 이동
+    thumbnails.forEach((thumb, index) => {
+      thumb.addEventListener('mouseenter', () => {
+        stopAutoSlide();
+        showSlide(index);
+      });
+      thumb.addEventListener('mouseleave', () => {
+        startAutoSlide();
+      });
     });
-  });
 
-  // 초기 실행
-  showSlide(0);
-  startAutoSlide();
-</script>
+    // 초기값 설정
+    showSlide(0);
+    startAutoSlide();
+  </script>
 
+  <!-- 버튼 클릭 이벤트 -->
+  <script>
+    const buttons = document.querySelectorAll('.btn1');
+    const contents = document.querySelectorAll('.genre1');
+    const rankButtons = document.querySelectorAll(".rank-btn");
+
+
+
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        // 모든 버튼의 active 클래스 제거
+        buttons.forEach(btn => btn.classList.remove('active'));
+        // 클릭한 버튼에 active 클래스 추가
+        button.classList.add('active');
+
+        // 모든 콘텐츠 숨기기
+        contents.forEach(content => content.style.display = 'none');
+
+        // 클릭한 버튼의 내용만 콘텐츠 보이기
+        const targetId = button.getAttribute('data-target');
+        const targetContent = document.getElementById(targetId);
+        if (targetContent) {
+          targetContent.style.display = 'block';
+        }
+        const genreName = button.textContent.trim(); // 클릭한 버튼 텍스트
+        
+      });
+    });
+
+    // 초기값 뮤지컬
+    buttons[0].click();
+
+  </script>
 
 </body>
+
 </html>

@@ -1,0 +1,41 @@
+* {
+      box-sizing: border-box;
+    }
+
+    /* common */
+    a {
+      text-decoration: none;
+      color: black;
+    }
+
+    body {}
+
+
+.outer-wrapper {
+    margin: 0 auto;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+p {
+    margin: 0;
+}
+
+/* .layout-01{
+            max-width:1280px;
+            margin:0 auto;
+        } */
+@font-face {
+    font-family: 'logo-font';
+    src: url('./BnviitLasik.ttf');
+    font-style: normal;
+}
