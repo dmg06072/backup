@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         *{box-sizing: border-box;}
+        ul{padding:0;margin:0;list-style:none;}
+        a{text-decoration: none;color:black;}
+        body{margin:0;padding:0;}
+
+        .wrapper>header>nav{
+            /* border-bottom:1px solid; */
+            height: 54px;
+        }
+        .wrapper>header>nav>ul.main-menu{
+            display: flex;
+            justify-content: flex-start;
+            gap: 10px;
+            padding-left: 10px;
+            align-items: center;
+            height: 100%;
+            background-color: white;
+        }
+        .wrapper>header>nav>ul.main-menu>li{
+            /* border: 1px solid; */
+            height: 100%;
+            padding: 0 16px;
+            position: relative;
+        }
+        .wrapper>header>nav>ul.main-menu>li>a{
+            display: block;
+            height: 53px;
+            line-height: 48px;
+            color: black;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        .wrapper>header>nav>ul.main-menu>li>ul.sub-menu{
+            /* border: 1px solid; */
+            display: flex;
+            width: 100vw;
+            height: 58px;
+            align-items: center;
+            left: 0;
+            position: fixed;
+            background-color: #fbfbfb;
+            border-top:1px solid;
+            border-color: #beb7b7;
+        }
+        .wrapper>header>nav>ul.main-menu>li>ul.sub-menu>li{
+            padding: 20px;
+            font-size: 1rem;
+        }
+        .wrapper>header>nav>ul.main-menu>li>ul.sub-menu>li>a{
+            display: block;
+            color: rgba(41, 41, 45, .8);
+        }
+        .wrapper>header>nav>ul.main-menu>li>ul.sub-menu>li>a:hover{
+            display: block;
+            color: black;
+            font-weight: bold;
+        }
+        </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="top-header"></div>
+            <nav>
+                <ul class="main-menu">
+                    <li>
+                        <a href="javascript:void(0)">홈</a>
+                    <li>
+                        <a href="javascript:void(0)">투어</a>
+                    <li>
+                        <a href="javascript:void(0)">티켓</a>
+                        <ul class="sub-menu">
+                            <li><a href="javascript:void(0)">뮤지컬</a></li>
+                            <li><a href="javascript:void(0)">콘서트</a></li>
+                            <li><a href="javascript:void(0)">스포츠</a></li>
+                            <li><a href="javascript:void(0)">전시/행사</a></li>
+                            <li><a href="javascript:void(0)">클래식/무용</a></li>
+                            <li><a href="javascript:void(0)">아동/가족</a></li>
+                            <li><a href="javascript:void(0)">연극</a></li>
+                            <li><a href="javascript:void(0)">레저/캠핑</a></li>
+                            <li><a href="javascript:void(0)">토픽</a></li>
+                            <li><a href="javascript:void(0)">MD PICK</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <main></main>
+    </div>
+</body>
+</html>
