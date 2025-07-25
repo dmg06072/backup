@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>순차적 텍스트 애니메이션</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background-color: #111;
+      overflow: hidden;
+      position: relative;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      margin: 0;
+      font-size: 3rem;
+      font-weight: 900;
+
+      background: linear-gradient(270deg, #ff4e50, #f9d423, #24c6dc, #ff4e50);
+      background-size: 400% 400%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      opacity: 0;
+      animation: none;
+    }
+
+    @keyframes moveRotateFade {
+      0% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(calc(100vw - 100%), -100vh) rotate(800deg);
+        opacity: .1;
+      }
+    }
+
+    @keyframes gradientShift {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .animate {
+      animation: moveRotateFade 3s linear forwards,
+                 gradientShift 6s linear infinite;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="animatedText">집 가고 싶다</h1>
+
+  <script>
+    const texts = [
+        "집 가고 싶다",
+        "1시간 남았다",
+        "곧 집 간다",
+        "화이팅"
+    ];
+
+    const textEl = document.getElementById("animatedText");
+    let currentIndex = 0;
+
+    function showNextText() {
+      textEl.textContent = texts[currentIndex];
+      textEl.classList.remove("animate"); // reset
+      void textEl.offsetWidth; // reflow 강제 (애니메이션 재시작 트릭)
+      textEl.classList.add("animate");
+
+      currentIndex = (currentIndex + 1) % texts.length;
+    }
+
+    textEl.addEventListener("animationend", () => {
+      setTimeout(showNextText, 200); // 다음 텍스트 약간 딜레이 후 재시작
+    });
+
+    // 최초 실행
+    showNextText();
+  </script>
+</body>
+</html>

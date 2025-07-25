@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>동적 Y조절 3D 텍스트 회전목마</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: #111;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      perspective: 1000px;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+    .carousel {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      transform-style: preserve-3d;
+    }
+    .text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      font-size: 1.5rem;
+      font-weight: bold;
+      background: linear-gradient(270deg, #ff4e50, #f9d423, #24c6dc, #ff4e50);
+      background-size: 400% 400%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientFlow 6s linear infinite;
+      transform-style: preserve-3d;
+      transform-origin: center center;
+      user-select: none;
+      white-space: nowrap;
+    }
+    @keyframes gradientFlow {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+    </style>
+</head>
+<body>
+    <div class="carousel" id="carousel">
+      <div class="text">집</div>
+      <div class="text">가자</div>
+      <div class="text">ㄱㄱ</div>
+      <div class="text">불금</div>
+      <div class="text">집간다</div>
+      <div class="text">잠</div>
+      <div class="text">ㅋㅋㄹㅃㅃ</div>
+      <div class="text">주말</div>
+    </div>
+   
+  <script>
+    const carousel = document.getElementById('carousel');
+    const texts = carousel.querySelectorAll('.text');
+    const itemCount = texts.length;
+    const radius = 220; // 회전 반지름
+    let angle = 0;       // 현재 회전 각도 (degree)
+
+    function animate() {
+      angle += 0.7; // 회전 속도 (1초에 0.5도씩)
+      if(angle >= 360) angle -= 360;
+
+      texts.forEach((text, i) => {
+        const deg = (360 / itemCount) * i + angle; // 현재 텍스트 각도
+        const rad = deg * Math.PI / 180;
+
+        // 3D 위치 계산
+        const x = Math.sin(rad) * radius;
+        const z = Math.cos(rad) * radius;
+
+        // Z축 위치를 -radius~radius 범위로 매핑 (앞뒤 깊이)
+        // z가 클수록 뒤쪽, 작을수록 앞쪽
+        // Y축 위치를 Z값에 반비례로 조절: 앞쪽 (z 작을 때) y는 낮게, 뒤쪽 (z 클 때) y는 높게
+        // y 위치 범위 설정 (예: -20px ~ +20px)
+        const maxYOffset = 20;
+        // z는 -radius~radius, 이를 0~1 범위로 정규화 후 maxYOffset 범위에 매핑
+        const yOffset = ((z + radius) / (2 * radius)) * (3 * maxYOffset) - maxYOffset;
+        // 반대로 높게 (뒤쪽이 위로 가도록) 원하면 yOffset = maxYOffset - yOffset;
+
+        // transform 설정 (x,z,yOffset)
+        // 회전Y는 0, 대신 x,z 위치를 직접 계산해서 넣음
+        text.style.transform = `
+          translateX(${x}px)
+          translateZ(${z}px)
+          translateY(${-yOffset}px)
+          translate(-50%, -50%)
+        `;
+
+        // Z값에 따라 크기 조절 (입체감 향상)
+        const scale = 1 + (radius - z) / (radius * 5); // z가 작을수록 scale 커짐
+        text.style.scale = scale;
+
+        // 투명도도 조절하면 더 좋음 (멀리 있을 땐 흐리게)
+        const opacity = 0.3 + ((radius - z) / (2 * radius));
+        text.style.opacity = opacity;
+      });
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+  </script>
+</body>
+</html>
+
+
