@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Chartjs -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="./js/지역별범죄건수.js"></script>
+</head>
+<body style="display: flex; justify-content: center; align-items: center; height: 110vh; margin:0;">
+    <div style="width: 600px; height: 600px;">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script>
+        console.log(지역별범죄건수);
+
+        const result = 
+        지역별범죄건수.reduce((resultObj,item)=>{
+            const {범죄대분류,범죄중분류, ...rest} = item;
+            const values = Object.values(rest);
+            const item_sum = values.reduce((sum,count)=>{return sum+count;},0)
+            // console.log(범죄대분류, item_sum);
+            // return {범죄대분류,item_sum}
+            if(resultObj[범죄대분류]!==undefined){
+                resultObj[범죄대분류] += item_sum;
+            }else{
+                // 처음 누적
+                resultObj[범죄대분류] = item_sum;
+            }
+            return resultObj;
+        },{});
+
+        console.log(result);
+    </script>
+
+<!-- Chartjs -->
+    <script>
+        const ctx = document.getElementById('myChart');
+
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: Object.keys(result),
+                datasets: [{
+                    label: '밥',
+                    data: Object.values(result),
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+    
+</body>
+</html>
