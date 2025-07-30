@@ -1,0 +1,59 @@
+root{font-size:16px;}
+*{box-sizing: border-box;}
+ul{list-style: none; padding:0; margin:0;}
+body{padding:0; margin:0;}
+a{text-decoration: none; color: black;}
+
+/*  */
+.wrapper{}
+.wrapper>header{}
+.wrapper>header>.top-header{}
+.wrapper>header>nav .navbar{
+    padding: 20px 40px;
+}
+.wrapper>header>ul .nav{
+    padding: 0 40px;
+}
+.nav-tabs .nav-link.active {
+  text-decoration: underline;
+}
+.nav-tabs .nav-link:first-child {
+    color: #0D6EFD;
+}
+.nav-tabs .nav-link:nth-child(n+2){
+    color:black;
+}
+/*  */
+.wrapper>main{}
+.wrapper>main>section{}
+
+/*  */
+.wrapper>main>section.banner-block .carousel-control-prev,
+.wrapper>main>section.banner-block .carousel-control-next{
+    font-size: 5rem;
+}
+
+/*  */
+.carousel-control-prev-icon,
+.carousel-control-next-icon{
+    width:48px;
+    height:48px;
+}
+
+/*  */
+.wrapper>main>section.card-block {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border: 5px solid red;
+    gap:15px;
+    /*  */
+    place-items: center;
+    padding: 30px;
+}
+
+.wrapper>main>section.navtab-block .tab-content{
+     min-height : 300px;
+}
+
+/*  */
+.wrapper>footer{}
