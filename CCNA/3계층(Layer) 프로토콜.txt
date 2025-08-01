@@ -1,0 +1,16 @@
+3계층(Layer) 프로토콜
+IP, ICMP, ARP
+
+LAN구간 통신 - 이더넷 프로토콜 - MAC
+
+ARP(Address Resolution Protocol
+LAN 구간 통신 : 컴퓨터에 등록된 IP 	->	 MAC 확인 -> 	통신
+				3			->		2
+
+48bit 구성
+16진수 표시(0-9, A, B, C, D, E, F)
+0000.00 00.0000
+		↓ 장치 ID
+FFFF.FF FF.FFFF
+ ↑
+제조자 ID

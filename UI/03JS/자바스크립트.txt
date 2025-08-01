@@ -51,3 +51,393 @@ const btnEl = document.querySelector('.btn');
 
 변수 지정 : let
 상수 지정 : const 
+----------------------------------------------------------------------------------------------------
+### 배열 ###
+#배열 	: 여러 자료 Type을 저장하기 위한 자료구조
+	: 배열은 순서번호(Index)를 가지고 있고 번호를 통해서 요소값에 접근가능
+// let arr=['str1', "str2", `str3`, null, true, false, undefined, {name:"홍길동",age: 15}];
+console.log(arr);	// 배열에 저장된 전체값 불러오기
+console.log(arr[0]);	// 배열의 n번째 값 불러오기
+console.log(arr[1]); 
+---------------------------------------------------------------
+자바스크립트의 배열은 동적확장이 가능하다
+---------------------------------------------------------------
+arr[8] = 100;	// 8(n)번째 배열에 원하는 값 삽입
+---------------------------------------------------------------
+#배열함수 
+push(마지막 index+1에 값 추가), pop(마지막 index 값 제거)
+arr.push('aaa'); : 배열 끝에 원하는 값 삽입(추가)
+arr.pop();	: 배열 끝 값 제거
+---------------------------------------------------------------
+#배열 순회 : forEach
+배열 내의 모든 요소를 순차적으로 접근하는 반복구문
+Callback함수( 로직을 전달, ()=>{} )
+arr.forEach( (요소명)=>{처리할 코드} )
+Ex) arr.forEach((item)=>{ console.log('item', item)});
+---------------------------------------------------------------
+# 정렬
+기존 배열에서 정렬 진행
+sort((비교인자1, 비교인자2) => {return 비교인자1 - 비교인자})
+let arr2=[10,55,11,24,5,44,1,22]
+console.log(arr2);		- 기본값
+오름차순 정렬
+arr2.sort((a,b)=>{return a-b;});
+내림차순 정렬
+arr2.sort((a,b)=>{return b-a;});
+약식
+arr2.sort((a,b)=>b-a);
+---------------------------------------------------------------
+#필터
+: 배열내에서 특정요소만 필터링
+arr.filter((요소명) => {return 조건식})
+필터링된 요소만 묶은 배열이 따로 생성
+let arr3=[11, 'str1', 22, "str2", 33, `str3`, 10.5, null, true, false, undefined, 101, {name:"홍길동",age: 15}];
+let result = arr3.filter(() => {return typeof item=="number"});	- 배열에서 숫자만 반환
+let result2 = arr3.filter(() => {return typeof item=="string"});	- 배열에서 문자만 반환
+---------------------------------------------------------------
+# 누산 : 누적합, 누적곱... 누적 작업
+arr.reduce((누적변수,요소명) => {처리로직}, 누적변수 초기값)
+---------------------------------------------------------------
+# 배열object 처리 [{},{},{}...]
+---------------------------------------------------------------
+#map : 기존 배열의 새로운 형태의 배열로 재구성
+arr.map((요소명) => {return 재구성할 요소의 형태})
+새로운 배열이 만들어짐
+---------------------------------------------------------------
+#프로토타입
+object 객체 : 객체를 다루는 기본함수 제공
+object 자료형과는 별개로 미리 만들어진 객체
+console.log(Object.keys(obj));       	:obj의 key를 배열로 반환
+console.log(Object.values(obj));    	:obj의 value를 배열로 반환
+console.log(Object.entries(obj));   	:열거가능한 속성([key:value]) 형태의 배열로 반환
+복사하기
+console.log(Object.assign(obj,ob1,ob2)); 	: obj, ob1, ob2 내용을 합치고 같은 내용을 후에 나온 값을 넣어 반환
+읽기전용
+freeze : 기존 내용 수정 불가 + 새속성 추가 불가
+Object.freeze(obj);
+seal : 기존 내용 수정 가능 + 새속성 추가 불가능
+Object.seal(obj);
+obj.name = "ㅈ모";
+console.log(obj);
+        
+obj["key1"]="value1";
+console.log(obj);
+
+object.prototype : 객체가 상속을 구현하는데 사용되는 메커니즘, object 객체 내에 구성
+function Person(name){
+            this.name=name;
+        }
+        
+        // 프로토타입으로 객체 생성
+        Person.prototype.toString=function(){
+            return this.name;
+        }
+        Person.prototype.sayHello=function(){
+            console.log("HELLO WORLD..");
+        }
+        const person1 = new Person("홍길동");
+        console.log(person1);
+        console.log(person1.toString());
+        person1.sayHello();
+---------------------------------------------------------------
+# 연산자
+- 산술연사자 
++
+-
+*
+/
+% : 짝홀수, 배수, 수의 범위 제한, 자리수
+
+- 대입연산자 : 공간 = 값(우선처리)
+
+- 복합대입연사자
++=
+-+
+*=
+/+
+%=...
+
+- 증감연사자
+++a
+a++
+--a
+a--
+
+비교연산자
+>
+>=
+<
+<=
+==	: 동등 비교
+!=	: 부등 비교
+=== 	: 일치 비교
+
+- 논리연산자
+&&
+||
+!	: 논리 부정 연산자 (true or false의 값의 반대값을 반환)
+
+- 삼항연산자
+조건식 ? 참인 경우 실행 : 거짓인 경우 실행 문장
+
+tip. parseInt : 정수 선언. 소숫점 아래 숫자 버림
+------------------------------------------------------------------------------------------------------------------------------
+함수 : 수(Data)를 받아 처리하는 논리적 공간
+
+var변수는 가급적 사용은 지양(사용하지 않는게 좋음)
+function은 목전에 따라 사용여부 결정(처음에 만든 효과를 주고싶으면 사용)
+function은 기본으로 이름부여도 가능하다(익명함수 or 이름부여된 함수 선택가능)
+화살표함수(()=>{}) 는 기본적으로 익명함수로 처리된다
+------------------------------------------------------------------------------------------------------------------------------
+### 마우스 ###
+클릭이벤트
+        var cnt=0;
+        const d1El = document.querySelector('.d1');
+        d1El.addEventListener("click",(e)=>{
+            console.log("clicked...",e.target);
+            d1El.innerHTML=`<h1>${++cnt}</h1>`;
+        });
+클릭이벤트 + 클로저 상태관리
+        function clickhandler() {
+            // 상태
+            let cnt = 0;
+            function addCnt(node) {
+                cnt++;
+                console.log("addCnt...",cnt);
+                node.innerHTML=`<h1>${cnt}</h1)`;
+            }
+            return addCnt;
+        }
+        const addCnt = clickhandler();
+        const d2El = document.querySelector('.d2');
+        d2El.addEventListener("click",(e)=>{
+            console.log("clicked...",e.target);
+            addCnt(d2El);
+        });
+mouseenter   : 마우스 포인터가 특정영역내로 진입시
+d3El.addEventListener('mouseenter',()=>{d3El.innerHTML=`<h1>MOUSEENTER</h1>`});
+mouseover    : 마우스 포인터가 특정영역내에 머무를시
+d3El.addEventListener('mouseleave',()=>{d3El.innerHTML=`<h1>MOUSELEAVE</h1>`});
+mouseleave   : 마우스 포인터가 특정영역 밖으로 나갈때
+d3El.addEventListener('mouseover',()=>{d3El.innerHTML=`<h1>MOUSEOVER</h1>`});
+click        : 마우스 1회 클릭
+d3El.addEventListener('click',()=>{d3El.innerHTML=`<h1>MOUSECLICK</h1>`});
+dblckick     : 마우스 2회 클릭
+d3El.addEventListener('dblclick',()=>{d3El.innerHTML=`<h1>MOUSEDOUBLECLICK</h1>`});
+contextmenu  : 마우스 우클릭
+d3El.addEventListener('contextmenu',(e)=>{
+            d3El.innerHTML=`<h1>마우스 우클릭</h1>`
+            e.preventDefault();
+        });
+
+dragstart    : 드래그 시작(마우스를 끌어당길때의 시적점)
+drag         : 드래그 중
+dragenter    : 드래그가 대상 영역 위로 이동시(요소가 드랍의 대상이 될때)
+dragover     : 드래그가 대상 영역 위에 있는 동안(요소가 드랍의 대상이 될때)
+dragleave    : 드래그가 대상 영역에서 벗어날때(요소가 드랍의 대상이 될때)
+dragend      : 드래그 종료
+drop         : 드랍(끌어온 마우스의 왼쪽PUSH상태 -> 손을 뗀 경우)
+
+ const d4El = document.querySelector('.d4');
+        d4El.addEventListener('dragenter',(e)=>{
+            e.preventDefault();         // 이벤트 기능 차단
+            console.log('dargenter...',);
+        });
+        d4El.addEventListener('dragover',(e)=>{
+            e.preventDefault();         
+            console.log('dragover...')
+            // d4El.style.opacity=0.5;
+            d4El.style.border="5px dashed lightgray";
+            d4El.style.color="lightgray";
+            
+        });
+        d4El.addEventListener('dragleave',(e)=>{
+            e.preventDefault();
+            d4El.style.border="5px dashed gray";
+            d4El.style.color="gray";
+
+        });
+        d4El.addEventListener('dragend',(e)=>{
+            e.preventDefault();
+        });
+
+        //유효성 검사 함수
+        function isvalid(file) {
+            // type이 image/* 인지
+            if(!file.type.startsWith('image/')){
+                alert("이미지 파일만 업로드 가능함 ㅋ.");
+                return false;
+            }
+            // file size
+            if(file.size >= (1024*1024*10)){
+                alert("최대 허용 파일 크기는 1MB입니다.")
+                return false;
+            }
+
+            // ture / false
+            return true;
+        }
+        d4El.addEventListener('drop',(e)=>{
+            e.preventDefault();
+            d4El.style.border="5px dashed gray";
+            d4El.style.color="gray";
+            // console.log('drop',e);
+            // console.log('drop',e.target);
+            // console.log('drop',e.dataTransfer);
+            // console.log('drop',e.dataTransfer.files);
+            // console.log('drop',e.dataTransfer.files[0]);
+            const files = e.dataTransfer.files;     
+            console.log(files);
+
+            for(let i=0;i<files.length;i++) {
+                const file = files[i];      // 드래그 & 드랍 했을 때 i번째 파일 가져옴 
+                // 유효성 검증
+                if(!isvalid(file)) {
+                    return ;                // 파일 형태가 맞지 않다면 값 반환(처리 중단)
+                }
+                // 이미지 PREVIEW
+                const previewEl = document.querySelector('.preview');
+                const newImageEl = document.createElement('img'); // img 태그 생성
+                newImageEl.src = URL.createObjectURL(file);     // 생성한 이미지 요소의 src 속성에 이미지 URL 할당
+                                                                // 브라우저가 해당 파일을 미리볼 수 있게 가상의 URL 생성
+                previewEl.appendChild(newImageEl);      // 생성한 이미지 요소를 프리뷰 영역에 추가하여 화면에 표시
+            }
+
+        });
+--------------------------------------------------------------------------------------------------------------------------------
+### 키보드 ###
+KEYUP    : 키보드가 올라갈 때(대소문자 구별 x)
+ex)
+const keyupEl = document.querySelector('#input1')
+        const p1El = document.querySelector('#p1')
+        keyupEl.addEventListener('keyup',(e)=>{
+            console.log("keydown",e);
+KEYDOWN  : 키보드가 내려갈 때
+KEYPRESS : 키보드를 계속 누를 때(제어문자(ex shift)인식 하지 않는다, 영문 대소문자 구별 가능)
+--------------------------------------------------------------------------------------------------------------------------------
+### 체크이벤트 ###
+    <script>
+        const chkEl = document.querySelector('#chk');
+        // change : checkbox, radio, file, textarea, select ...
+        chkEl.addEventListener('change',(e)=>{
+            console.log('change...',e.target.checked);
+            if(e.target.checked) {
+                // 체크되었을때 처리로직
+                document.querySelector('.chk-block label').style.color='purple';
+            }else{
+                // 미체크시 처리로직
+                document.querySelector('.chk-block label').style.color='black';
+            }
+        })
+    </script>
+--------------------------------------------------------------------------------------------------------------------------------
+### 스크롤 ###
+<script>
+        const navEl = document.querySelector('.wrapper nav');
+        let scrollState = 0;
+        document.addEventListener('scroll',()=>{
+            // window.scrollY: ViewPort를 기준으로 가장 위쪽 부분의 세로축 위치
+            console.log('scorllY...', window.scrollY);
+            console.log('scorllTop...', document.documentElement.scrollTop);
+            // console.log('scorllHeight...', document.documentElement.scrollHeight);
+
+            // window.scrollX : ViewPort를 기준으로 가장 왼쪽 부분부터의 가로축 위치
+            // console.log('scorllX...', window.scrollX);
+            // console.log('scorllX...', document.documentElement.scrollLeft);
+            
+            // 스크롤 값이 1000이상인 상태에서 스크롤을 위로 올렸을 때 보여줘
+            // 상태값 담기위한 변수 : let scrollState
+            // 상태값 언제 저장할지
+            // window.scrollY>=1000 && scrollState  window.scrollY
+            
+            // 헤더스타일변경
+            if(window.scrollY>=1000 && scrollState>window.scrollY){
+                navEl.classList.remove('hide');
+                navEl.classList.add('show');
+            }
+            else if(window.scrollY>=30){
+                navEl.classList.remove('show');
+                navEl.classList.add('hide');
+            }
+            else{
+                navEl.classList.remove('hide');
+                navEl.classList.add('show');
+
+            }
+            scrollState = window.scrollY;
+        })
+    </script>
+--------------------------------------------------------------------------------------------------------------------------------
+### RESIZE ###
+<style>
+        .ball {
+            border: 1px solid;
+            min-width:50px;
+            min-height: 50px;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom:0;
+            margin:auto;
+            transition:.8s;
+        }
+        .ball-1280px {
+            width: 300px;
+            height: 300px;
+            border : 5px solid;
+            background-color: green;
+        }
+        .ball-768px {
+            width: 150px;
+            height:150px;
+            border:3px solid;
+            background-color: orange;
+        }
+        .ball-480px {
+            width: 100px;
+            height:100px;
+            border:1px solid;
+            background-color: plum;
+        }
+        </style>
+</head>
+<body>
+    <div class="ball ball-1280px"></div>
+   
+    <script>
+        window.addEventListener('resize',()=>{
+            // console.log('외부 크기 변화 width확인,',window.outerWidth);
+            // console.log('외부 크기 변화 width확인,',window.outerHeight);
+
+            console.log('내부 크기 변화 width확인,',window.innerWidth);
+            // console.log('내부 크기 변화 width확인,',window.innerHeight);
+
+            const ballEl = document.querySelector('.ball');
+            // 모바일인 경우
+            if(window.innerWidth<=480)
+            {
+                ballEl.className='ball ball-480px';
+            }
+            // 태블릿인 경우
+            else if(window.innerWidth<=768)
+            {
+                ballEl.className='ball ball-768px';
+            }
+            // 데스크탑인 경우
+            else
+            {
+                ballEl.className='ball ball-1280px';
+            }
+        })
+    </script>
+--------------------------------------------------------------------------------------------------------------------------------
+### Dom Load ###
+Load 이벤트
+DOMContentLoaded : 최초 Document 로드시 1회 동작(HTML이 전부 파싱된 이후 Dom객체가
+완성되고 나서 CSS, 외부파일 로드여부와는 관계없다)
+Load             : 최초 Document 로드시 1회 동작(모든 리소스가 완전히 로드된 이후 실행)
+
+
+
