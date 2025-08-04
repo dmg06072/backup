@@ -1,0 +1,41 @@
+																				
+																				
+																				
+																				
+라우터에 관리자가 직접(수동) 목적지와 방향을 넣어줌 /      비용 저렴 | 관리자 직접 관리																				
+																				
+↑																				
+↑			Static : 단일 목적지 방향																	
+↑																				
+정적																				
+																				
+		default : 그 외 나머지 목적지 방향																		
+------------------------------------------------------------------------------------------------------																				
+			Distance Vector : RIP																	
+	    ___	IGP			(Interior Gateway Protocol)															
+	 |		Link - State : OSPF																	
+	 |																			
+동적	-|																			
+↓	 |																			
+↓	     |---	EGP			(Extriror Gateway Protocol)															
+↓																				
+↓																				
+ 전체경로 학습 + 최적경로 산출																				
+																				
+ AS(Autonomous System) : 자치시스템, 관리자에 의해 관리되는 라우터의 집합																				
+																				
+Distance Vector : 거리벡터 형식                                                   전체경로정보 학습 -> 최적경로 산출                                       Distance 거리 -> 거리재는 단위 : Hop                                        Vector : 방향																				
+																				
+																																
+																				
+	1. HOP 제한(MAX : 15Hop)			소규모			RIP(Route Information Protocol)				Matric : Hop(Max hop : 15)				라우팅 프로토콜이 최적 경로를 계산하기 위한 기준 값					
+	2										Multicast : 224.0.0.9									
+											Administrative Distance : 120									
+Looping											광고주기 : 30초									
+																				
+LINK - STATE :		링크(케이블) 상태정보(OSPF Bandwidth 값을 이용)																		
+전체경로 학습 -> 최적경로 계산																				
+bandwidth(대역폭) : 한번에(초당) 보낼 수 있는 비트양 | bandwidth가 많을수록 빠름.																				
+																				
+																				
+																				
