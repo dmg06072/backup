@@ -1,0 +1,10 @@
+sql 설치 및 실행
+mysql community download 검색 -> MySQL Installer for Windows -> 용량 큰거 다운
+다 넥스트 누르고 비번 1234 후 넥스트 -> 또 계속 넥스트 누르고 엑스큐트 -> 피니시
+mysql installer 실행 -> mysql workbench 8 최신 버전 설치
+
+커맨드 실행
+마이스큐엘 커맨드 라인 클라이언트 실행 -> 비번 입력(1234)
+접속하기
+mysql 폴더에 bin 폴더에서 커맨드 창 열기 -> mysqld -u root -p -> 비번 입력
+mysqld -u root -p : 루트 권한으로 패스워드 입력해서 접속
