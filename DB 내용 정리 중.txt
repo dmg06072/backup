@@ -32,3 +32,4 @@ DDL	Data Definition Language	데이터베이스 구조 정의	CREATE, ALTER, DRO
 DML	Data Manipulation Language	데이터 조작 (삽입, 수정, 삭제, 조회)	INSERT, UPDATE, DELETE, SELECT
 DCL	Data Control Language	권한 부여, 취소	GRANT, REVOKE
 TCL	Transaction Control Language	트랜잭션 제어	COMMIT, ROLLBACK, SAVEPOINT
+
