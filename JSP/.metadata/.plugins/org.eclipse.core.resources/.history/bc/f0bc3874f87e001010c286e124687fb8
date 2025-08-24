@@ -1,0 +1,15 @@
+package Ch01;
+
+import java.util.Date;
+
+public class C05DateCalendarMain {
+
+	public static void main(String[] args) {
+		// Date
+		Date d1 = new Date();
+		System.out.println(d1);
+		
+
+	}
+
+}

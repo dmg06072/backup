@@ -1,0 +1,28 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+<jsp:useBean id="dto" class="Ch02.ProfileDto" scope="범위" />    
+<%
+	/*
+		request 내장객체 : 요청정보값 저장(Http Request Protocol의 구조형태)
+	*/	
+	/* 문자셋 설정	*/
+	request.setCharacterEncoding("UTF-8");
+	response.setContentType("text/html; charset=UTF-8");
+
+%>    
+    
+    
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+
+		<h1>내 컴터 Process File</h1>
+		ProfileDto : <%=dto %><br/>
+		
+		
+</body>
+</html>

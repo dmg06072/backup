@@ -1,0 +1,156 @@
+package Ch02;
+
+public class UserDto {
+	private String userid;
+	private String password;
+	private String rePassword;
+	private String zipcode;
+	private String addr1;
+	private String add2;
+	private int phone1;
+	private int phone2;
+	private int tell1;
+	private int tell2;
+	private int tell3;
+	private String email;
+	private String email2;
+	
+	// 디폴트 생성자
+	public UserDto() {}
+	// 기본 인자 생성자
+
+	public UserDto(String userid, String password, String rePassword, String zipcode, String addr1, String add2,
+			int phone1, int phone2, int tell1, int tell2, int tell3, String email, String email2) {
+		super();
+		this.userid = userid;
+		this.password = password;
+		this.rePassword = rePassword;
+		this.zipcode = zipcode;
+		this.addr1 = addr1;
+		this.add2 = add2;
+		this.phone1 = phone1;
+		this.phone2 = phone2;
+		this.tell1 = tell1;
+		this.tell2 = tell2;
+		this.tell3 = tell3;
+		this.email = email;
+		this.email2 = email2;
+	}
+
+	// 게터 & 세터
+	public String getUserid() {
+		return userid;
+	}
+
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getRePassword() {
+		return rePassword;
+	}
+
+	public void setRePassword(String rePassword) {
+		this.rePassword = rePassword;
+	}
+
+	public String getZipcode() {
+		return zipcode;
+	}
+
+	public void setZipcode(String zipcode) {
+		this.zipcode = zipcode;
+	}
+
+	public String getAddr1() {
+		return addr1;
+	}
+
+	public void setAddr1(String addr1) {
+		this.addr1 = addr1;
+	}
+
+	public String getAdd2() {
+		return add2;
+	}
+
+	public void setAdd2(String add2) {
+		this.add2 = add2;
+	}
+
+	public int getPhone1() {
+		return phone1;
+	}
+
+	public void setPhone1(int phone1) {
+		this.phone1 = phone1;
+	}
+
+	public int getPhone2() {
+		return phone2;
+	}
+
+	public void setPhone2(int phone2) {
+		this.phone2 = phone2;
+	}
+
+	public int getTell1() {
+		return tell1;
+	}
+
+	public void setTell1(int tell1) {
+		this.tell1 = tell1;
+	}
+
+	public int getTell2() {
+		return tell2;
+	}
+
+	public void setTell2(int tell2) {
+		this.tell2 = tell2;
+	}
+
+	public int getTell3() {
+		return tell3;
+	}
+
+	public void setTell3(int tell3) {
+		this.tell3 = tell3;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getEmail2() {
+		return email2;
+	}
+
+	public void setEmail2(String email2) {
+		this.email2 = email2;
+	}
+
+	// 투스트링
+	@Override
+	public String toString() {
+		return "UserDto [userid=" + userid + ", password=" + password + ", rePassword=" + rePassword + ", zipcode="
+				+ zipcode + ", addr1=" + addr1 + ", add2=" + add2 + ", phone1=" + phone1 + ", phone2=" + phone2
+				+ ", tell1=" + tell1 + ", tell2=" + tell2 + ", tell3=" + tell3 + ", email=" + email + ", email2="
+				+ email2 + "]";
+	}
+	
+	
+	
+}

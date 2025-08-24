@@ -1,0 +1,11 @@
+JDBC
+
+JDBC API 사용 흐름
+JDBC 드라이버 로딩 -> Connection 객체 생성 -> Statement 객체 생성 -> Query 실행 -> ResultSet 객체로부터 데이터 조회 -> ResultSet 객체 Close
+-> Statement 객체 Close -> Connetion 객체 Close
+
+JDBC 드라이브 메모리 적재
+Connection 객체 생성
+PreparedStatement 객체 불러옴 + SQL 쿼리문 준비
+ResultSet rs = .executeQuery(), int result = .executeUpdate()
+while(rs.next()) {}

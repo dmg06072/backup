@@ -1,0 +1,73 @@
+package Ch02;
+
+public class UserDto {
+	private String userid;
+	private String password;
+	private String rePassword;
+	private String zipcode;
+	private String addr1;
+	private String add2;
+	
+	// 디폴트 생성자
+	public UserDto() {}
+	// 기본 인자 생성자
+	public UserDto(String userid, String password, String rePassword, String zipcode, String addr1, String add2) {
+		super();
+		this.userid = userid;
+		this.password = password;
+		this.rePassword = rePassword;
+		this.zipcode = zipcode;
+		this.addr1 = addr1;
+		this.add2 = add2;
+	}
+	
+	// 게터 & 세터
+	public String getUserid() {
+		return userid;
+	}
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getRePassword() {
+		return rePassword;
+	}
+	public void setRePassword(String rePassword) {
+		this.rePassword = rePassword;
+	}
+	public String getZipcode() {
+		return zipcode;
+	}
+	public void setZipcode(String zipcode) {
+		this.zipcode = zipcode;
+	}
+	public String getAddr1() {
+		return addr1;
+	}
+	public void setAddr1(String addr1) {
+		this.addr1 = addr1;
+	}
+	public String getAdd2() {
+		return add2;
+	}
+	public void setAdd2(String add2) {
+		this.add2 = add2;
+	}
+	
+	// 투스트링
+	@Override
+	public String toString() {
+		return "UserDto [userid=" + userid + ", password=" + password + ", rePassword=" + rePassword + ", zipcode="
+				+ zipcode + ", addr1=" + addr1 + ", add2=" + add2 + "]";
+	}
+	
+	
+	
+	
+	
+}

@@ -1,0 +1,27 @@
+package Ch02;
+
+class A {
+	public void Ex1() {
+		System.out.println("A's Ex1 Func Call!");
+	}
+	
+}
+
+class B {
+	public void Ex2() {
+		System.out.println("B's Ex2 Func Call!");
+	}
+}
+
+public class C06ThrowAndThrowsMain {
+
+	public static void main(String[] args) {
+		A ob1 = new A();
+		A ob2 = new B();
+		
+		ob1.Ex1();
+		ob2.Ex2();
+
+	}
+
+}

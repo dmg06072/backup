@@ -1,0 +1,28 @@
+package Ch01;
+
+class C03Simple{
+	int n;
+	C03Simple(int n){
+		this.n = n;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if(obj instanceof C02Simple) {
+			C02Simple down = (C02Simple)obj;
+			return this.n == down.n;
+		}
+		return false;
+	}
+	
+}
+
+public class C03ObjectMain2 {
+
+	public static void main(String[] args) {
+		C03Simple ob1 = new C03Simple(10);
+		System.out.println(ob1.toString());
+		
+
+	}
+
+}
