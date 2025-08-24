@@ -1,0 +1,20 @@
+abstrcat calss animal{
+	int max; // 멤버변수
+	abstract void sound();
+	void move(){}
+}
+
+
+interface animal{
+	int max; // final static가 기본
+	void sound() // 추상 메서드
+}
+
+정의
+인터페이스는 기능의 명세(설계도)만 제공하는 구조
+모든 메서드는 기본적으로 추상 메서드로 간주됨(JDK 8 이전)
+구현은 하지 않고, "이런 기능을 반드시 만들어야 한다"는 규칙만 정의함
+
+사용 이유
+1) 설계 > 구현
+2) 결합도를 낮추는데 사용
